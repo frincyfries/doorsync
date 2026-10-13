@@ -213,15 +213,33 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
 .personnel-columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: stretch;
+  align-items: start;
   gap: 24px;
   margin-top: 24px;
 }
 .personnel-columns > .dashboard-panel { container-type: inline-size; }
 .personnel-columns + .dashboard-panel { margin-top: 24px; }
 #lockedRooms .request-card { grid-template-columns: minmax(0, 1fr); }
+#personnelView .personnel-columns .request-card { padding: 14px 8px; gap: 16px; }
+#personnelView .personnel-columns .request-card > div:first-child { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 4px 16px; }
+#personnelView .personnel-columns .request-card .card-topline { align-items: flex-start; }
+.completed-column-head,
+#personnelView #completedRequests .request-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(100px, 0.65fr) minmax(150px, 1fr);
+  gap: 20px;
+  align-items: center;
+  padding: 14px 8px;
+}
+.completed-column-head { color: #245b9e; font-size: 0.8rem; font-weight: 700; }
+#personnelView #completedRequests .request-card > div:first-child,
+#personnelView #completedRequests .card-topline { display: contents; }
+#personnelView #completedRequests h4 { grid-column: 1; grid-row: 1; }
+#personnelView #completedRequests p { grid-column: 2; grid-row: 1; }
+#personnelView #completedRequests .badge { grid-column: 3; grid-row: 1; justify-self: start; }
+#personnelView #completedRequests .card-topline > span:not(.badge) { grid-column: 4; grid-row: 1; }
 @container (max-width: 520px) {
-  #personnelView .request-card > div:first-child { grid-template-columns: minmax(0, 1fr); }
+  #personnelView .personnel-columns .request-card > div:first-child { grid-template-columns: minmax(0, 1fr); }
   #personnelView .request-card .card-topline {
     grid-column: 1;
     grid-row: auto;
@@ -235,6 +253,12 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
   .personnel-columns { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 620px) {
+  .completed-column-head { display: none; }
+  #personnelView #completedRequests .request-card { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  #personnelView #completedRequests h4,
+  #personnelView #completedRequests p,
+  #personnelView #completedRequests .badge,
+  #personnelView #completedRequests .card-topline > span:not(.badge) { grid-column: 1; grid-row: auto; }
   #personnelView .request-card { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   #personnelView .request-card > div:first-child { grid-template-columns: minmax(0, 1fr); }
   #personnelView .request-card .card-topline { grid-column: 1; grid-row: auto; flex-direction: row; align-items: center; justify-content: flex-start; }
