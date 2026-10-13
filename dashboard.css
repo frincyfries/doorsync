@@ -118,8 +118,14 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
 .dashboard-columns .schedule-item:last-child,
 .dashboard-columns .timeline-item:last-child { border-bottom: 0; }
 .schedule-list, .timeline { border-top: 1px solid var(--line); }
-.schedule-item { grid-template-columns: minmax(100px, 0.75fr) minmax(0, 1.3fr); gap: 10px 18px; padding: 18px 12px; }
-.schedule-item > :last-child { grid-column: 2; }
+.schedule-section { container-type: inline-size; }
+.schedule-item { grid-template-columns: minmax(110px, 0.8fr) minmax(0, 1.3fr) minmax(150px, 1fr); gap: 10px 18px; padding: 16px 8px; align-items: start; }
+.schedule-item > :last-child { grid-column: 3; }
+.panel .professor-name { font-size: 1.05rem; font-weight: 700; color: var(--ink); margin: 0 0 18px; line-height: 1.5; }
+@container (max-width: 580px) {
+  .schedule-item { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+  .schedule-item > :last-child { grid-column: 2; }
+}
 .schedule-item p { overflow-wrap: anywhere; }
 .schedule-open { background: #f0f8f1; }
 .timeline { gap: 0; }

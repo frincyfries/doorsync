@@ -213,6 +213,7 @@ function visibleRequests() {
 }
 
 function renderShell() {
+  document.querySelector("#signedInPanel").classList.toggle("hidden", session?.role === "professor");
   document.querySelector("#demoControls").classList.toggle("hidden", session?.role !== "professor");
   document.querySelector("#pendingRequestSummary").classList.toggle("hidden", activeRole === "student");
   document.querySelector("#availableProfessorSummary").classList.toggle("hidden", session?.role !== "student");
@@ -323,24 +324,6 @@ function renderStudent() {
           .join("");
 }
 
-function fillSelects() {
-  const professorSelect = document.querySelector("#professorSelect");
-  const activeProfessor = selectedProfessorId;
-  const availableProfessors =
-    session?.role === "professor"
-      ? state.professors.filter((professor) => professor.ProfessorID === selectedProfessorId)
-      : state.professors;
-  professorSelect.innerHTML = availableProfessors
-    .map(
-      (professor) =>
-        `<option value="${professor.ProfessorID}">${professor.FullName}</option>`,
-    )
-    .join("");
-  professorSelect.value = activeProfessor;
-  professorSelect.disabled = session?.role === "professor";
-
-}
-
 function renderSchedule() {
   const now = new Date();
   document.querySelector("#demoModeToggle").checked = state.demoMode;
@@ -398,13 +381,13 @@ function renderSchedule() {
 }
 
 function renderProfessor() {
-  fillSelects();
   renderSchedule();
   const professor = byId(
     state.professors,
     "ProfessorID",
-    document.querySelector("#professorSelect").value,
+    selectedProfessorId,
   );
+  document.querySelector("#professorName").textContent = professor.FullName;
 
   document.querySelector("#setAvailable").setAttribute("aria-pressed", professor.CurrentStatus === "Available");
   document.querySelector("#setOccupied").setAttribute("aria-pressed", professor.CurrentStatus === "Occupied");
@@ -668,10 +651,6 @@ document.querySelector("#loginForm").addEventListener("submit", (event) => {
   notify(`Signed in as ${currentUserName()}.`);
 });
 
-document.querySelector("#professorSelect").addEventListener("change", () => {
-  selectedProfessorId = document.querySelector("#professorSelect").value;
-  renderProfessor();
-});
 document.querySelector("#setAvailable").addEventListener("click", () => setProfessorStatus("Available"));
 document.querySelector("#setOccupied").addEventListener("click", () => setProfessorStatus("Occupied"));
 document.querySelector("#notifyPersonnel").addEventListener("click", createUnlockRequest);

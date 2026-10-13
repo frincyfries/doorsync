@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DoorSync</title>
     <link rel="stylesheet" href="styles.css?v=20261009-1">
-    <link rel="stylesheet" href="dashboard.css?v=20261013-5">
+    <link rel="stylesheet" href="dashboard.css?v=20261013-6">
     <link rel="stylesheet" href="login.css?v=20261011-6">
   </head>
   <body>
@@ -80,7 +80,7 @@
           </button>
         </nav>
 
-        <section class="sidebar-panel">
+        <section id="signedInPanel" class="sidebar-panel">
           <h2><span class="sidebar-panel-icon"><img src="sidebar-user.svg" width="16" height="16" alt="" aria-hidden="true"></span>Signed In</h2>
           <div id="signedInUser" class="signed-in-user"></div>
         </section>
@@ -170,8 +170,7 @@
                   <p>Set your current faculty office status.</p>
                 </div>
               </div>
-              <label class="field-label" for="professorSelect">Professor</label>
-              <select id="professorSelect"></select>
+              <p id="professorName" class="professor-name"></p>
               <div class="toggle-row">
                 <button id="setAvailable" class="status-action" type="button">Available</button>
                 <button id="setOccupied" class="status-action warning" type="button">Occupied</button>
@@ -269,6 +268,6 @@
 
     <script src="data.js?v=20261009-1"></script>
     <script src="schedule.js?v=20261011-2"></script>
-    <script src="app.js?v=20261013-1"></script>
+    <script src="app.js?v=20261013-2"></script>
   </body>
 </html>

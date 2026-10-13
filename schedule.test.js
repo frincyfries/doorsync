@@ -185,6 +185,9 @@ test("request handler enforces ownership and time, migrates saved data, and save
     vm.runInContext(`session = {role: '${role}', userId: '${{student: "STU-001", professor: "PROF-001", personnel: "PERS-001"}[role]}'}; saveSession()`, context);
     vm.runInContext("applySession()", context);
     assert.equal(node("#availableProfessorSummary").classList.hidden, role !== "student");
+    assert.equal(node("#signedInPanel").classList.hidden, role === "professor");
+    if (role === "professor") assert.equal(node("#professorName").textContent, "Dr. Ramon Cruz");
+    assert.equal(nodes.has("#professorSelect"), false);
     const savedSession = storage.get("doorsync-session-v1");
     const savedState = storage.get("doorsync-state-v1");
     node("#logoutButton").handlers.click();
