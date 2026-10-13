@@ -103,7 +103,7 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
 .action-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
 #professorView > .action-layout {
   grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  align-items: start;
+  align-items: stretch;
 }
 .action-layout > .panel { padding: 22px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
 .action-layout > :last-child { border-left: 1px solid var(--line); padding-left: 22px; }
