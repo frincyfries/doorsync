@@ -110,6 +110,7 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
 .demo-controls label { font-size: 0.8rem; }
 .dashboard-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 24px; align-items: stretch; }
 .dashboard-columns > section { min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.dashboard-columns > .activity-section { align-self: start; }
 .dashboard-columns .section-heading { margin: 0; padding: 0 0 16px; }
 .dashboard-columns .schedule-item:last-child,
 .dashboard-columns .timeline-item:last-child { border-bottom: 0; }
