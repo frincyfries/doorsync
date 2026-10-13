@@ -1,0 +1,1469 @@
+{
+  "brd": {
+    "paragraphs": [
+      {
+        "style": "Normal",
+        "text": "Document Version History"
+      },
+      {
+        "style": "Normal",
+        "text": "Approval Matrix"
+      },
+      {
+        "style": "Instructive Text",
+        "text": "Approval refers to the approver\u2019s review and acceptance of the content and overall intention of this document, including acceptance of any commitments described in order to successfully deliver the initiative. The approver, where relevant, also confirms that this document complies with relevant strategies, policies and regulatory requirements."
+      },
+      {
+        "style": "Normal",
+        "text": "Reviewed By"
+      },
+      {
+        "style": "Normal",
+        "text": "Approved By"
+      },
+      {
+        "style": "Normal",
+        "text": "Noted By"
+      },
+      {
+        "style": "Normal",
+        "text": "Reference Documents"
+      },
+      {
+        "style": "Heading 1",
+        "text": "Introduction"
+      },
+      {
+        "style": "Heading 2",
+        "text": "Background"
+      },
+      {
+        "style": "Normal",
+        "text": "Students who arrive at their classrooms are often unaware whether the room has already been unlocked, forcing them to wait outside, sometimes for a long time, until personnel arrive to open the door."
+      },
+      {
+        "style": "Normal",
+        "text": "Both situations create recurring problems that affect the daily campus experience, including:"
+      },
+      {
+        "style": "Normal",
+        "text": "Lost instructional and consultation time"
+      },
+      {
+        "style": "Normal",
+        "text": "Repeated, unnecessary trips to the faculty office"
+      },
+      {
+        "style": "Normal",
+        "text": "Frustration, anxiety, and helplessness among students and faculty"
+      },
+      {
+        "style": "Normal",
+        "text": "Between the two problems, classroom door delays have been identified as the more frequent issue, since they affect students at the start of nearly every class period."
+      },
+      {
+        "style": "Normal",
+        "text": "The current process is entirely manual. Students either wait outside the locked room or walk to the faculty office to look for personnel with the keys, with no way to check status remotely. Likewise, students visiting the faculty office have no way to confirm a professor's availability aside from physically checking, often finding out only after arriving that the professor is out, in a meeting, or already occupied."
+      },
+      {
+        "style": "Normal",
+        "text": "This lack of real-time information forces students to rely on guesswork, hallway conversations, or repeated failed visits, resulting in wasted time and unnecessary stress for both students and faculty."
+      },
+      {
+        "style": "Heading 2",
+        "text": "Objectives"
+      },
+      {
+        "style": "Normal",
+        "text": "The objective of DoorSync is to give students real-time visibility into classroom unlock status and professor availability, replacing guesswork and unnecessary waiting with a clear, reliable source of information."
+      },
+      {
+        "style": "Normal",
+        "text": "The system aims to reduce the time students spend waiting outside locked classrooms by letting faculty flag a room for opening and notifying personnel, while letting professors set their own availability status within the app."
+      },
+      {
+        "style": "Normal",
+        "text": "In addition, the solution is expected to reduce unnecessary trips to the faculty office and improve coordination among students, professors, and personnel across campus."
+      },
+      {
+        "style": "Heading 1",
+        "text": "Definition of Terms"
+      },
+      {
+        "style": "Heading 1",
+        "text": "Scope"
+      },
+      {
+        "style": "List Paragraph",
+        "text": "Show real-time classroom unlock status to students through the app."
+      },
+      {
+        "style": "List Paragraph",
+        "text": "Show real-time professor availability status (Available or Occupied) to students."
+      },
+      {
+        "style": "Normal",
+        "text": "Allow faculty to flag a specific room for unlocking and route that request to personnel."
+      },
+      {
+        "style": "Normal",
+        "text": "Allow personnel to view and act on room unlock requests within the app."
+      },
+      {
+        "style": "Normal",
+        "text": "Allow professors to manually set their own availability status."
+      },
+      {
+        "style": "Normal",
+        "text": "Send notifications when a room status or professor status changes."
+      },
+      {
+        "style": "Normal",
+        "text": "To be determined once the system design and development are finalized."
+      },
+      {
+        "style": "Normal",
+        "text": "To be determined once the system design and development are finalized."
+      },
+      {
+        "style": "Normal",
+        "text": "Support three user roles within a single application: student, professor, and personnel."
+      },
+      {
+        "style": "Normal",
+        "text": "To be determined once the system design and development are finalized."
+      },
+      {
+        "style": "Normal",
+        "text": "Cover a limited pilot set of classrooms and faculty offices for this term."
+      },
+      {
+        "style": "Normal",
+        "text": "To be determined once the system design and development are finalized."
+      },
+      {
+        "style": "Normal",
+        "text": "To be determined once the system design and development are finalized."
+      },
+      {
+        "style": "Heading 1",
+        "text": "Assumptions"
+      },
+      {
+        "style": "Normal",
+        "text": "DoorSync assumes that students, professors, and personnel have access to a smartphone or computer with internet connectivity. It is assumed that professors will update their status when leaving or returning to the faculty office, and that personnel will act on unlock requests within a reasonable timeframe. Specific business rules, exception handling, and system behavior are still to be defined as development progresses."
+      },
+      {
+        "style": "Heading 1",
+        "text": "Business Rules and Functionalities"
+      },
+      {
+        "style": "Heading 1",
+        "text": "Process Narrative"
+      },
+      {
+        "style": "Normal",
+        "text": "Process A \u2014 Classroom Unlock Request"
+      },
+      {
+        "style": "Normal",
+        "text": "Process B \u2014 Professor Availability Update"
+      },
+      {
+        "style": "Heading 1",
+        "text": "Process Flowchart (Swimlane)"
+      },
+      {
+        "style": "Heading 1",
+        "text": "Input Data Description"
+      },
+      {
+        "style": "Heading 1",
+        "text": "Exceptions Handling"
+      },
+      {
+        "style": "Normal",
+        "text": "The Business Process Owner and Business Analysts are expected to document below all the business exceptions"
+      },
+      {
+        "style": "Normal",
+        "text": "identified in the automation process. Exceptions are of 3 types, and both need to be addressed:"
+      },
+      {
+        "style": "List Paragraph",
+        "text": "Known Exceptions (Business Rule Exceptions) - Previously encountered, a scenario is defined with clear actions and workarounds for each case."
+      },
+      {
+        "style": "List Paragraph",
+        "text": "Unknown Exceptions - New situation that was not encountered before. It cannot be predicted and in case it happens, it needs to be flagged and communicated to an authorized person for evaluation."
+      },
+      {
+        "style": "List Paragraph",
+        "text": "Application Exceptions \u2013 A list of possible exceptions and errors to be considered while working with the applications being used for the process."
+      },
+      {
+        "style": "Heading 2",
+        "text": "Known Business Exceptions"
+      },
+      {
+        "style": "Heading 2",
+        "text": "Unknown Business Exceptions"
+      },
+      {
+        "style": "Heading 2",
+        "text": "Application Exceptions"
+      },
+      {
+        "style": "Heading 1",
+        "text": "Expected System Output"
+      },
+      {
+        "style": "Heading 1",
+        "text": "Mock-up"
+      }
+    ],
+    "tables": [
+      {
+        "index": 1,
+        "rows": [
+          [
+            "Version No",
+            "Author",
+            "Date Modified",
+            "Description of Change",
+            "Signature"
+          ],
+          [
+            "1.0",
+            "",
+            "Aug 01, 2026",
+            "Initial Draft",
+            ""
+          ]
+        ]
+      },
+      {
+        "index": 2,
+        "rows": [
+          [
+            "Issue date",
+            "Name",
+            "Position",
+            "Approval date and Signature"
+          ],
+          [
+            "",
+            "",
+            "People Associate Manager / Process Owner",
+            ""
+          ]
+        ]
+      },
+      {
+        "index": 3,
+        "rows": [
+          [
+            "Issue date",
+            "Name",
+            "Position",
+            "Approval date and Signature"
+          ],
+          [
+            "",
+            "",
+            "People Senior Manager\u00a0/ Immediate Supervisor of Process Owner",
+            ""
+          ]
+        ]
+      },
+      {
+        "index": 4,
+        "rows": [
+          [
+            "Issue date",
+            "Name",
+            "Position",
+            "Approval date and Signature"
+          ],
+          [
+            "",
+            "",
+            "Technology Business Partner",
+            ""
+          ]
+        ]
+      },
+      {
+        "index": 5,
+        "rows": [
+          [
+            "Document",
+            "Location"
+          ],
+          [
+            "",
+            ""
+          ]
+        ]
+      },
+      {
+        "index": 6,
+        "rows": [
+          [
+            "System",
+            "Mobile / Web Application (platform TBD)"
+          ],
+          [
+            "Description",
+            "DoorSync is a proposed real-time notification system that helps students, professors, and personnel coordinate classroom access and professor availability across campus.\nThe system is intended to let professors indicate their availability, let faculty flag rooms that need to be unlocked, and let personnel act on those requests, with students able to check this information within the app.\nTo be determined once the system design and development are finalized. (Detailed system behavior will be documented once development begins.)\nThe intended benefit is reduced waiting time and less guesswork for students, and clearer coordination for professors and personnel."
+          ]
+        ]
+      },
+      {
+        "index": 7,
+        "rows": [
+          [
+            "Term",
+            "Description"
+          ],
+          [
+            "Personnel",
+            "Campus staff responsible for physically unlocking classroom doors upon request."
+          ],
+          [
+            "Room Status",
+            "The unlock state of a classroom, expected to be shown in the app as Locked or Unlocked."
+          ],
+          [
+            "Professor Status",
+            "A professor's availability, expected to be shown in the app as Available or Occupied."
+          ],
+          [
+            "Unlock Request",
+            "A notification created by faculty to inform personnel that a specific room needs to be opened."
+          ],
+          [
+            "TBD",
+            "To be determined once the system design and development are finalized."
+          ],
+          [
+            "TBD",
+            "To be determined once the system design and development are finalized."
+          ],
+          [
+            "TBD",
+            "To be determined once the system design and development are finalized."
+          ],
+          [
+            "TBD",
+            "To be determined once the system design and development are finalized."
+          ],
+          [
+            "TBD",
+            "To be determined once the system design and development are finalized."
+          ],
+          [
+            "TBD",
+            "To be determined once the system design and development are finalized."
+          ],
+          [
+            "TBD",
+            "To be determined once the system design and development are finalized."
+          ]
+        ]
+      },
+      {
+        "index": 8,
+        "rows": [
+          [
+            "Category",
+            "Functionality",
+            "Description",
+            "Exception Handling"
+          ],
+          [
+            "Room Status Display",
+            "Show Room Lock Status to Students",
+            "The student view lists the student's upcoming classes, each showing the room name, schedule, location, and a color-coded badge indicating whether the room is currently Locked or Unlocked.",
+            "Not yet shown in the current mock-up; error and edge-case handling to be defined during development."
+          ],
+          [
+            "Professor Status Display",
+            "Show Faculty Availability to Students",
+            "The student view lists professors with their name, office, and department, along with a color-coded badge showing whether they are currently Available or Occupied.",
+            "Not yet shown in the current mock-up; error and edge-case handling to be defined during development."
+          ],
+          [
+            "Professor Status Toggle",
+            "Set Availability Status",
+            "Professors can switch their own status between Available and Occupied using a toggle on their screen; the selected status is reflected immediately in the app.",
+            "Not yet shown in the current mock-up; error and edge-case handling to be defined during development."
+          ],
+          [
+            "Room Unlock Request",
+            "Flag a Room for Unlocking",
+            "Professors select a room from a dropdown list of available rooms and tap \u201cNotify personnel\u201d to send an unlock request for that room.",
+            "Not yet shown in the current mock-up; error and edge-case handling to be defined during development."
+          ],
+          [
+            "Request Confirmation",
+            "Confirm Request Sent",
+            "After a professor flags a room, the app displays a confirmation message stating the request was sent to personnel and is awaiting unlock.",
+            "N/A"
+          ],
+          [
+            "Personnel Request Queue",
+            "Display Pending Unlock Requests",
+            "The personnel view lists all pending unlock requests, showing the room name, which professor flagged it, and how long ago it was flagged.",
+            "Not yet shown in the current mock-up; error and edge-case handling to be defined during development."
+          ],
+          [
+            "Request Resolution",
+            "Mark Request as Unlocked",
+            "Personnel resolves a pending request by tapping \u201cMark unlocked,\u201d which updates the room's status badge to Unlocked and moves the request out of the pending list.",
+            "Not yet shown in the current mock-up; error and edge-case handling to be defined during development."
+          ],
+          [
+            "Completed Request Log",
+            "Display Completed Requests",
+            "Once resolved, a request appears under \u201cCompleted today\u201d showing the room name and the time it was unlocked.",
+            "Not yet shown in the current mock-up; error and edge-case handling to be defined during development."
+          ],
+          [
+            "Activity Log",
+            "Show Recent Status Activity to Professor",
+            "The professor screen displays a recent activity feed, such as confirmation that a room was unlocked by a specific personnel member, or a record of the professor's own past status changes, each with a timestamp.",
+            "Not yet shown in the current mock-up; error and edge-case handling to be defined during development."
+          ],
+          [
+            "Room Detail View",
+            "View Room Details",
+            "Personnel can tap \u201cView room\u201d on a request card to see more details about the flagged room.",
+            "Not yet shown in the current mock-up; error and edge-case handling to be defined during development."
+          ],
+          [
+            "Role-Based Views",
+            "Separate Views per User Role",
+            "The app provides three distinct views, Student, Professor, and Personnel, accessed through a tab switcher, each showing only the information and actions relevant to that role.",
+            "N/A"
+          ],
+          [
+            "Status Indicator Design",
+            "Color-Coded Status Badges",
+            "Status badges are color-coded for quick recognition: blue indicates Available or Unlocked, while yellow indicates Occupied or Locked.",
+            "N/A"
+          ]
+        ]
+      },
+      {
+        "index": 9,
+        "rows": [
+          [
+            "#",
+            "Procedure",
+            "Responsible",
+            "Details",
+            "Reference"
+          ],
+          [
+            "1",
+            "Identify Room to be unlocked",
+            "Professor",
+            "1. Professor identifies a classroom that needs to be unlocked (e.g., before a scheduled class).\n2. Professor opens the DoorSync app and selects the room from the room list.",
+            ""
+          ],
+          [
+            "2",
+            "Notify Personnel",
+            "Professor",
+            "1. Professor taps \u201cNotify personnel.\u201d\n2. The app displays a confirmation toast: \u201cRequest sent to personnel \u2014 awaiting unlock.\u201d",
+            ""
+          ],
+          [
+            "3",
+            "Unlock Request",
+            "System",
+            "1. The system creates an Unlock Request record, timestamps it, and keeps Room Status = Locked.\n2. The system routes the request to the on-duty Personnel account(s).\n3. If the request is not resolved within a reasonable timeframe, it is flagged and escalated \u2014 to be determined once the system design and development are finalized.",
+            ""
+          ],
+          [
+            "4",
+            "Receive and act on request",
+            "Personnel",
+            "1. Personnel receives a notification of the new Unlock Request (shown as a pulsing Locked badge with requester and time flagged, e.g., \u201cFlagged by Prof. M. Santos \u00b7 2 min ago\u201d).\n2. Personnel proceeds to the flagged room and physically unlocks the door.\n3. Personnel taps \u201cMark unlocked\u201d in the app to close out the request.",
+            ""
+          ],
+          [
+            "5",
+            "Update status and notify",
+            "System",
+            "1. The system updates Room Status from Locked to Unlocked.\n2. The system sends a status-change notification to students tracking that room.\n3. The completed request moves to the Personnel \u201cCompleted today\u201d list.",
+            ""
+          ],
+          [
+            "6",
+            "Check room status",
+            "Student",
+            "1. Student views \u201cYour next classes\u201d in the app, showing each room with a Locked (red, pulsing) or Unlocked (green) badge.\n2. Once Room Status changes to Unlocked, the student proceeds to the classroom.",
+            ""
+          ]
+        ]
+      },
+      {
+        "index": 10,
+        "rows": [
+          [
+            "#",
+            "Procedure",
+            "Responsible",
+            "Details",
+            "Reference"
+          ],
+          [
+            "1",
+            "Set Availability",
+            "Professor",
+            "1. Professor opens the app's status panel.\n2. Professor taps the Available / Occupied toggle to set status.",
+            ""
+          ],
+          [
+            "2",
+            "Update and broadcast status",
+            "System",
+            "1. The system updates the Professor Status in real time.\n2. The system logs the change to the professor's \u201cRecent activity\u201d feed (e.g., \u201cYou set status to Occupied \u00b7 8:55 AM\u201d).\n3. Whether a push notification is sent on every change, or only in specific cases, is to be determined once the system design and development are finalized.",
+            ""
+          ],
+          [
+            "3",
+            "View faculty availability",
+            "Student",
+            "1. Student views the \u201cFaculty availability\u201d list, showing each professor with an Available (green) or Occupied (amber) badge.",
+            ""
+          ]
+        ]
+      },
+      {
+        "index": 11,
+        "rows": [
+          [
+            "Input Name",
+            "Description",
+            "File Type / Format",
+            "Remarks"
+          ],
+          [
+            "Room Selection (Unlock Request)",
+            "Room chosen by the professor from the room list when flagging a classroom to be unlocked",
+            "In-app form input (dropdown/list selection)",
+            "Captured when the professor taps \u201cNotify personnel\u201d; creates a new Unlock Request record."
+          ],
+          [
+            "Professor Availability Toggle",
+            "Available / Occupied selection set manually by the professor in the status panel.",
+            "In-app form input (binary toggle)",
+            "Overwrites the professor's current status; timestamped and logged to \u201cRecent activity"
+          ],
+          [
+            "Unlock Confirmation (Mark Unlocked)",
+            "Confirmation submitted by personnel after physically unlocking the flagged room",
+            "In-app button action",
+            "Closes the associated Unlock Request and changes Room Status from Locked to Unlocked"
+          ],
+          [
+            "Room / Faculty Status View Request",
+            "Read-only request made when a student opens the app to check a room or professor's status",
+            "In-app session/view request",
+            "Does not modify data; returns the latest Room Status and Professor Status values"
+          ]
+        ]
+      },
+      {
+        "index": 12,
+        "rows": [
+          [
+            "No.",
+            "Relevant Field",
+            "Description"
+          ],
+          [
+            "1",
+            "Unlock Request",
+            "1. Personnel does not act on an Unlock Request within a reasonable timeframe."
+          ],
+          [
+            "2",
+            "Professor Status",
+            "1. Professor forgets to update status upon leaving or returning to the office."
+          ]
+        ]
+      },
+      {
+        "index": 13,
+        "rows": [
+          [
+            "No.",
+            "Relevant Field",
+            "Description"
+          ],
+          [
+            "1",
+            "An unexpected and unknown exception occurs while the system is processing a request or status update.",
+            "To be determined once the system design and development are finalized."
+          ]
+        ]
+      },
+      {
+        "index": 14,
+        "rows": [
+          [
+            "No.",
+            "Relevant Field",
+            "Description"
+          ],
+          [
+            "1",
+            "Connectivity Loss",
+            "1. User loses internet connectivity while submitting a request or updating status.\n2. To be determined once the system design and development are finalized."
+          ],
+          [
+            "2",
+            "Notification Delivery Failure",
+            "1. Push/in-app notification fails to send or is delayed.\n2. To be determined once the system design and development are finalized."
+          ]
+        ]
+      },
+      {
+        "index": 15,
+        "rows": [
+          [
+            "Output Name",
+            "Description",
+            "File Type / Format",
+            "Remarks"
+          ],
+          [
+            "Room Status Indicator (Locked / Unlocked)",
+            "Real-time badge shown to students reflecting a classroom's current unlock state.",
+            "In-app status indicator",
+            "Updates immediately once personnel marks the room as unlocked."
+          ],
+          [
+            "Professor Availability Indicator",
+            "Real-time badge shown to students reflecting a professor's Available / Occupied status.",
+            "In-app status indicator",
+            "Updates immediately when the professor changes their status."
+          ],
+          [
+            "Unlock Request Confirmation",
+            "Toast notification confirming an Unlock Request was successfully sent to personnel",
+            "In-app notification",
+            "Shown to the professor immediately after tapping \u201cNotify personnel.\u201d"
+          ],
+          [
+            "New Unlock Request Alert",
+            "Notification alerting personnel to a newly flagged room.",
+            "In-app notification (push, TBD)",
+            "Displays requester name and time flagged, e.g. \u201cFlagged by Prof. M. Santos \u00b7 2 min ago.\u201d"
+          ],
+          [
+            "Status Change Notification",
+            "Notification sent to students tracking a specific room or professor when that status changes.",
+            "In-app / push notification (TBD)",
+            "Triggered automatically by the system; delivery channel to be determined once the system design and development are finalized."
+          ],
+          [
+            "Completed Request Log Entry",
+            "Record of a resolved Unlock Request moved to the Personnel \u201cCompleted today\u201d list.",
+            "In-app log entry",
+            "Serves as an audit trail of rooms unlocked and by whom."
+          ]
+        ]
+      }
+    ]
+  },
+  "database": {
+    "sheets": {
+      "Design Process": [
+        [
+          null,
+          "DoorSync Database Design"
+        ],
+        [
+          null,
+          "Following the 10-step process (Casalla, Software Design \u2014 Database Design Workshop)"
+        ],
+        [
+          null,
+          "Step 1 \u2014 Requirements (from the DoorSync BRD)"
+        ],
+        [
+          null,
+          "Who's involved",
+          "Students, professors, and personnel."
+        ],
+        [
+          null,
+          "What happens",
+          "A professor sets their own availability. A professor flags a room that needs unlocking; personnel acts on the request and unlocks it. Students check room and professor status, and can subscribe to be notified when a specific room or professor's status changes."
+        ],
+        [
+          null,
+          "What gets recorded",
+          "Room status, professor status, unlock requests (who flagged, who resolved, when), and which students are subscribed to which rooms/professors for notifications."
+        ],
+        [
+          null,
+          "Step 2 \u2014 Entities"
+        ],
+        [
+          null,
+          "STUDENT",
+          "Checks room/professor status and can subscribe to status-change alerts."
+        ],
+        [
+          null,
+          "PROFESSOR",
+          "Sets their own Available/Occupied status; flags rooms that need unlocking."
+        ],
+        [
+          null,
+          "PERSONNEL",
+          "Receives unlock requests and marks rooms as unlocked."
+        ],
+        [
+          null,
+          "ROOM",
+          "A classroom with a Locked/Unlocked status."
+        ],
+        [
+          null,
+          "UNLOCKREQUEST",
+          "One flagged request \u2014 connects a professor, a room, and the personnel who resolves it."
+        ],
+        [
+          null,
+          "Step 3 \u2014 Attributes & Primary Keys"
+        ],
+        [
+          null,
+          "Note",
+          "See each table's own sheet for the full attribute list and primary key. IDs use a readable prefix format (e.g. STU-001, PROF-001, RM-201) \u2014 simple to read and guaranteed unique."
+        ],
+        [
+          null,
+          "Step 4 \u2014 Relationships & Cardinality"
+        ],
+        [
+          null,
+          "\u2022",
+          "PROFESSOR (1) \u2014 flags \u2014 (0..*) UNLOCKREQUEST"
+        ],
+        [
+          null,
+          "\u2022",
+          "ROOM (1) \u2014 is target of \u2014 (0..*) UNLOCKREQUEST"
+        ],
+        [
+          null,
+          "\u2022",
+          "PERSONNEL (1) \u2014 resolves \u2014 (0..*) UNLOCKREQUEST  (Personnel is optional/blank until assigned)"
+        ],
+        [
+          null,
+          "\u2022",
+          "STUDENT (0..*) \u2014 subscribes to \u2014 (0..*) ROOM"
+        ],
+        [
+          null,
+          "\u2022",
+          "STUDENT (0..*) \u2014 subscribes to \u2014 (0..*) PROFESSOR"
+        ],
+        [
+          null,
+          "Step 5 \u2014 Resolving the Many-to-Many Relationships"
+        ],
+        [
+          null,
+          "STUDENT \u2194 ROOM",
+          "A student can subscribe to alerts for many rooms, and a room can have many student subscribers. Resolved with junction table ROOM_SUBSCRIPTION (composite key: StudentID + RoomID)."
+        ],
+        [
+          null,
+          "STUDENT \u2194 PROFESSOR",
+          "A student can subscribe to many professors, and a professor can have many student subscribers. Resolved with junction table PROFESSOR_SUBSCRIPTION (composite key: StudentID + ProfessorID)."
+        ],
+        [
+          null,
+          "PROFESSOR \u2194 ROOM",
+          "A professor can flag many different rooms over time, and a room can be flagged by many different professors over time. Resolved by UNLOCKREQUEST, which also carries its own identity (RequestID) and a third relationship to PERSONNEL \u2014 the same pattern as an APPOINTMENT connecting a patient and doctor while also recording who handled it."
+        ],
+        [
+          null,
+          "Step 6 \u2014 Normalization"
+        ],
+        [
+          null,
+          "\u2022",
+          "Professor and room names/emails/buildings are stored once, in PROFESSOR and ROOM, and referenced by ID everywhere else \u2014 never copied into UNLOCKREQUEST or the subscription tables."
+        ],
+        [
+          null,
+          "\u2022",
+          "CurrentStatus lives only on PROFESSOR and ROOM (the entity it describes), not duplicated onto UNLOCKREQUEST rows."
+        ],
+        [
+          null,
+          "\u2022",
+          "Each table describes exactly one kind of thing, and every non-key column depends only on that table's primary key."
+        ],
+        [
+          null,
+          "Step 7 \u2014 Tables in This Workbook"
+        ],
+        [
+          null,
+          "\u2022",
+          "STUDENT \u2014 see its own tab for schema and sample data."
+        ],
+        [
+          null,
+          "\u2022",
+          "PROFESSOR \u2014 see its own tab for schema and sample data."
+        ],
+        [
+          null,
+          "\u2022",
+          "PERSONNEL \u2014 see its own tab for schema and sample data."
+        ],
+        [
+          null,
+          "\u2022",
+          "ROOM \u2014 see its own tab for schema and sample data."
+        ],
+        [
+          null,
+          "\u2022",
+          "UNLOCKREQUEST \u2014 see its own tab for schema and sample data."
+        ],
+        [
+          null,
+          "\u2022",
+          "ROOM_SUBSCRIPTION \u2014 see its own tab for schema and sample data."
+        ],
+        [
+          null,
+          "\u2022",
+          "PROFESSOR_SUBSCRIPTION \u2014 see its own tab for schema and sample data."
+        ],
+        [
+          null,
+          "Built-in error prevention"
+        ],
+        [
+          null,
+          "\u2022",
+          "Every primary key column has conditional formatting that turns a row red if that ID (or ID combination, for the two junction tables) is duplicated elsewhere in the same column."
+        ],
+        [
+          null,
+          "\u2022",
+          "Status columns (CurrentStatus, Status) are dropdown lists, so only the allowed values can be entered."
+        ],
+        [
+          null,
+          "\u2022",
+          "Foreign key columns (RoomID, ProfessorID, PersonnelID, StudentID) are dropdown lists sourced directly from the referenced table's ID column, so a typo'd or non-existent ID can't be entered."
+        ]
+      ],
+      "STUDENT": [
+        [
+          "STUDENT \u2014 Table Schema"
+        ],
+        [
+          "Column Name",
+          "Data Type",
+          "Key / Notes"
+        ],
+        [
+          "StudentID",
+          "VARCHAR(10)",
+          "PRIMARY KEY"
+        ],
+        [
+          "FullName",
+          "VARCHAR(100)",
+          "NOT NULL"
+        ],
+        [
+          "Email",
+          "VARCHAR(100)",
+          "NOT NULL"
+        ],
+        [
+          "Course",
+          "VARCHAR(60)"
+        ],
+        [
+          "YearLevel",
+          "VARCHAR(15)"
+        ],
+        [
+          "Sample Data"
+        ],
+        [
+          "StudentID",
+          "FullName",
+          "Email",
+          "Course",
+          "YearLevel"
+        ],
+        [
+          "STU-001",
+          "Juan Dela Cruz",
+          "juan.delacruz@nu-baliwag.edu.ph",
+          "BS Computer Engineering",
+          "3rd Year"
+        ],
+        [
+          "STU-002",
+          "Maria Santos",
+          "maria.santos@nu-baliwag.edu.ph",
+          "BS Information Technology",
+          "2nd Year"
+        ],
+        [
+          "STU-003",
+          "Angelo Reyes",
+          "angelo.reyes@nu-baliwag.edu.ph",
+          "BS Computer Engineering",
+          "3rd Year"
+        ],
+        [
+          "STU-004",
+          "Kristine Bautista",
+          "kristine.bautista@nu-baliwag.edu.ph",
+          "BS Computer Science",
+          "4th Year"
+        ]
+      ],
+      "PROFESSOR": [
+        [
+          "PROFESSOR \u2014 Table Schema"
+        ],
+        [
+          "Column Name",
+          "Data Type",
+          "Key / Notes"
+        ],
+        [
+          "ProfessorID",
+          "VARCHAR(10)",
+          "PRIMARY KEY"
+        ],
+        [
+          "FullName",
+          "VARCHAR(100)",
+          "NOT NULL"
+        ],
+        [
+          "Department",
+          "VARCHAR(60)",
+          "NOT NULL"
+        ],
+        [
+          "Email",
+          "VARCHAR(100)",
+          "NOT NULL"
+        ],
+        [
+          "CurrentStatus",
+          "VARCHAR(10)",
+          "NOT NULL \u2014 'Available' or 'Occupied'"
+        ],
+        [
+          "StatusUpdatedAt",
+          "DATETIME"
+        ],
+        [
+          "Sample Data"
+        ],
+        [
+          "ProfessorID",
+          "FullName",
+          "Department",
+          "Email",
+          "CurrentStatus",
+          "StatusUpdatedAt"
+        ],
+        [
+          "PROF-001",
+          "Dr. Ramon Cruz",
+          "Computer Engineering",
+          "ramon.cruz@nu-baliwag.edu.ph",
+          "Occupied",
+          "2026-08-22 09:15:00"
+        ],
+        [
+          "PROF-002",
+          "Prof. Liza Fernandez",
+          "Information Technology",
+          "liza.fernandez@nu-baliwag.edu.ph",
+          "Available",
+          "2026-08-22 08:50:00"
+        ],
+        [
+          "PROF-003",
+          "Dr. Michael Torres",
+          "Computer Science",
+          "michael.torres@nu-baliwag.edu.ph",
+          "Available",
+          "2026-08-21 17:20:00"
+        ]
+      ],
+      "PERSONNEL": [
+        [
+          "PERSONNEL \u2014 Table Schema"
+        ],
+        [
+          "Column Name",
+          "Data Type",
+          "Key / Notes"
+        ],
+        [
+          "PersonnelID",
+          "VARCHAR(10)",
+          "PRIMARY KEY"
+        ],
+        [
+          "FullName",
+          "VARCHAR(100)",
+          "NOT NULL"
+        ],
+        [
+          "AssignedBuilding",
+          "VARCHAR(60)",
+          "NOT NULL"
+        ],
+        [
+          "Email",
+          "VARCHAR(100)",
+          "NOT NULL"
+        ],
+        [
+          "Sample Data"
+        ],
+        [
+          "PersonnelID",
+          "FullName",
+          "AssignedBuilding",
+          "Email"
+        ],
+        [
+          "PERS-001",
+          "Rico Manalo",
+          "Engineering Building",
+          "rico.manalo@nu-baliwag.edu.ph"
+        ],
+        [
+          "PERS-002",
+          "Ella Ramos",
+          "Main Building",
+          "ella.ramos@nu-baliwag.edu.ph"
+        ]
+      ],
+      "ROOM": [
+        [
+          "ROOM \u2014 Table Schema"
+        ],
+        [
+          "Column Name",
+          "Data Type",
+          "Key / Notes"
+        ],
+        [
+          "RoomID",
+          "VARCHAR(10)",
+          "PRIMARY KEY"
+        ],
+        [
+          "RoomName",
+          "VARCHAR(60)",
+          "NOT NULL"
+        ],
+        [
+          "Building",
+          "VARCHAR(60)",
+          "NOT NULL"
+        ],
+        [
+          "CurrentStatus",
+          "VARCHAR(10)",
+          "NOT NULL \u2014 'Locked' or 'Unlocked'"
+        ],
+        [
+          "StatusUpdatedAt",
+          "DATETIME"
+        ],
+        [
+          "Sample Data"
+        ],
+        [
+          "RoomID",
+          "RoomName",
+          "Building",
+          "CurrentStatus",
+          "StatusUpdatedAt"
+        ],
+        [
+          "RM-201",
+          "Room 201",
+          "Engineering Building",
+          "Locked",
+          "2026-08-22 07:00:00"
+        ],
+        [
+          "RM-202",
+          "Room 202",
+          "Engineering Building",
+          "Unlocked",
+          "2026-08-22 08:10:00"
+        ],
+        [
+          "RM-105",
+          "Room 105",
+          "Main Building",
+          "Locked",
+          "2026-08-22 07:45:00"
+        ],
+        [
+          "RM-110",
+          "Room 110",
+          "Main Building",
+          "Unlocked",
+          "2026-08-22 08:00:00"
+        ]
+      ],
+      "UNLOCKREQUEST": [
+        [
+          "UNLOCKREQUEST \u2014 Table Schema"
+        ],
+        [
+          "Column Name",
+          "Data Type",
+          "Key / Notes"
+        ],
+        [
+          "RequestID",
+          "VARCHAR(10)",
+          "PRIMARY KEY"
+        ],
+        [
+          "RoomID",
+          "VARCHAR(10)",
+          "FOREIGN KEY \u2192 ROOM"
+        ],
+        [
+          "ProfessorID",
+          "VARCHAR(10)",
+          "FOREIGN KEY \u2192 PROFESSOR"
+        ],
+        [
+          "PersonnelID",
+          "VARCHAR(10)",
+          "FOREIGN KEY \u2192 PERSONNEL (blank until assigned)"
+        ],
+        [
+          "FlaggedAt",
+          "DATETIME",
+          "NOT NULL"
+        ],
+        [
+          "CompletedAt",
+          "DATETIME"
+        ],
+        [
+          "Status",
+          "VARCHAR(15)",
+          "NOT NULL \u2014 'Pending' or 'Completed'"
+        ],
+        [
+          "Sample Data"
+        ],
+        [
+          "RequestID",
+          "RoomID",
+          "ProfessorID",
+          "PersonnelID",
+          "FlaggedAt",
+          "CompletedAt",
+          "Status"
+        ],
+        [
+          "REQ-001",
+          "RM-201",
+          "PROF-001",
+          "PERS-001",
+          "2026-08-22 08:55:00",
+          null,
+          "Pending"
+        ],
+        [
+          "REQ-002",
+          "RM-202",
+          "PROF-002",
+          "PERS-001",
+          "2026-08-22 07:50:00",
+          "2026-08-22 08:10:00",
+          "Completed"
+        ],
+        [
+          "REQ-003",
+          "RM-105",
+          "PROF-003",
+          "PERS-002",
+          "2026-08-21 07:30:00",
+          "2026-08-21 07:45:00",
+          "Completed"
+        ],
+        [
+          "REQ-004",
+          "RM-110",
+          "PROF-002",
+          "PERS-002",
+          "2026-08-22 07:40:00",
+          "2026-08-22 08:00:00",
+          "Completed"
+        ]
+      ],
+      "ROOM_SUBSCRIPTION": [
+        [
+          "ROOM_SUBSCRIPTION \u2014 Table Schema"
+        ],
+        [
+          "Column Name",
+          "Data Type",
+          "Key / Notes"
+        ],
+        [
+          "StudentID",
+          "VARCHAR(10)",
+          "PRIMARY KEY (composite), FOREIGN KEY \u2192 STUDENT"
+        ],
+        [
+          "RoomID",
+          "VARCHAR(10)",
+          "PRIMARY KEY (composite), FOREIGN KEY \u2192 ROOM"
+        ],
+        [
+          "SubscribedAt",
+          "DATETIME",
+          "NOT NULL"
+        ],
+        [
+          "Sample Data"
+        ],
+        [
+          "StudentID",
+          "RoomID",
+          "SubscribedAt"
+        ],
+        [
+          "STU-001",
+          "RM-201",
+          "2026-08-20 10:00:00"
+        ],
+        [
+          "STU-001",
+          "RM-202",
+          "2026-08-20 10:05:00"
+        ],
+        [
+          "STU-002",
+          "RM-201",
+          "2026-08-21 09:00:00"
+        ],
+        [
+          "STU-003",
+          "RM-105",
+          "2026-08-21 14:00:00"
+        ]
+      ],
+      "PROFESSOR_SUBSCRIPTION": [
+        [
+          "PROFESSOR_SUBSCRIPTION \u2014 Table Schema"
+        ],
+        [
+          "Column Name",
+          "Data Type",
+          "Key / Notes"
+        ],
+        [
+          "StudentID",
+          "VARCHAR(10)",
+          "PRIMARY KEY (composite), FOREIGN KEY \u2192 STUDENT"
+        ],
+        [
+          "ProfessorID",
+          "VARCHAR(10)",
+          "PRIMARY KEY (composite), FOREIGN KEY \u2192 PROFESSOR"
+        ],
+        [
+          "SubscribedAt",
+          "DATETIME",
+          "NOT NULL"
+        ],
+        [
+          "Sample Data"
+        ],
+        [
+          "StudentID",
+          "ProfessorID",
+          "SubscribedAt"
+        ],
+        [
+          "STU-002",
+          "PROF-001",
+          "2026-08-19 11:00:00"
+        ],
+        [
+          "STU-002",
+          "PROF-003",
+          "2026-08-19 11:05:00"
+        ],
+        [
+          "STU-004",
+          "PROF-001",
+          "2026-08-20 15:00:00"
+        ]
+      ],
+      "Step10_Validation": [
+        [
+          null,
+          "Step 10 \u2014 Validate With Real Questions"
+        ],
+        [
+          null,
+          "Every value below is a live formula pulling from the actual table sheets \u2014 not typed in."
+        ],
+        [
+          null,
+          "Question 1: Which students should be notified when Room RM-201 is unlocked?"
+        ],
+        [
+          null,
+          "Target Room ID",
+          "RM-201"
+        ],
+        [
+          null,
+          "Room name (lookup in ROOM)",
+          "=INDEX(ROOM!$B$12:$B$15,MATCH(C5,ROOM!$A$12:$A$15,0))"
+        ],
+        [
+          null,
+          "Subscriber 1 (from ROOM_SUBSCRIPTION row 1)",
+          "=IF(ROOM_SUBSCRIPTION!$B$10=C5,INDEX(STUDENT!$B$12:$B$15,MATCH(ROOM_SUBSCRIPTION!$A$10,STUDENT!$A$12:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Subscriber 2 (from ROOM_SUBSCRIPTION row 2)",
+          "=IF(ROOM_SUBSCRIPTION!$B$11=C5,INDEX(STUDENT!$B$12:$B$15,MATCH(ROOM_SUBSCRIPTION!$A$11,STUDENT!$A$12:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Subscriber 3 (from ROOM_SUBSCRIPTION row 3)",
+          "=IF(ROOM_SUBSCRIPTION!$B$12=C5,INDEX(STUDENT!$B$12:$B$15,MATCH(ROOM_SUBSCRIPTION!$A$12,STUDENT!$A$12:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Subscriber 4 (from ROOM_SUBSCRIPTION row 4)",
+          "=IF(ROOM_SUBSCRIPTION!$B$13=C5,INDEX(STUDENT!$B$12:$B$15,MATCH(ROOM_SUBSCRIPTION!$A$13,STUDENT!$A$12:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Trace path",
+          "ROOM (name) \u2192 ROOM_SUBSCRIPTION (who's subscribed) \u2192 STUDENT (their name)"
+        ],
+        [
+          null,
+          "Question 2: Which unlock requests are still pending, and who's responsible?"
+        ],
+        [
+          null,
+          "Request 1 (UNLOCKREQUEST row 14)",
+          "=IF(UNLOCKREQUEST!$G$14=\"Pending\",INDEX(ROOM!$B$12:$B$15,MATCH(UNLOCKREQUEST!$B$14,ROOM!$A$12:$A$15,0))&\" \u2014 flagged by \"&INDEX(PROFESSOR!$B$13:$B$15,MATCH(UNLOCKREQUEST!$C$14,PROFESSOR!$A$13:$A$15,0))&\" \u2014 assigned to \"&INDEX(PERSONNEL!$B$11:$B$12,MATCH(UNLOCKREQUEST!$D$14,PERSONNEL!$A$11:$A$12,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Request 2 (UNLOCKREQUEST row 15)",
+          "=IF(UNLOCKREQUEST!$G$15=\"Pending\",INDEX(ROOM!$B$12:$B$15,MATCH(UNLOCKREQUEST!$B$15,ROOM!$A$12:$A$15,0))&\" \u2014 flagged by \"&INDEX(PROFESSOR!$B$13:$B$15,MATCH(UNLOCKREQUEST!$C$15,PROFESSOR!$A$13:$A$15,0))&\" \u2014 assigned to \"&INDEX(PERSONNEL!$B$11:$B$12,MATCH(UNLOCKREQUEST!$D$15,PERSONNEL!$A$11:$A$12,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Request 3 (UNLOCKREQUEST row 16)",
+          "=IF(UNLOCKREQUEST!$G$16=\"Pending\",INDEX(ROOM!$B$12:$B$15,MATCH(UNLOCKREQUEST!$B$16,ROOM!$A$12:$A$15,0))&\" \u2014 flagged by \"&INDEX(PROFESSOR!$B$13:$B$15,MATCH(UNLOCKREQUEST!$C$16,PROFESSOR!$A$13:$A$15,0))&\" \u2014 assigned to \"&INDEX(PERSONNEL!$B$11:$B$12,MATCH(UNLOCKREQUEST!$D$16,PERSONNEL!$A$11:$A$12,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Request 4 (UNLOCKREQUEST row 17)",
+          "=IF(UNLOCKREQUEST!$G$17=\"Pending\",INDEX(ROOM!$B$12:$B$15,MATCH(UNLOCKREQUEST!$B$17,ROOM!$A$12:$A$15,0))&\" \u2014 flagged by \"&INDEX(PROFESSOR!$B$13:$B$15,MATCH(UNLOCKREQUEST!$C$17,PROFESSOR!$A$13:$A$15,0))&\" \u2014 assigned to \"&INDEX(PERSONNEL!$B$11:$B$12,MATCH(UNLOCKREQUEST!$D$17,PERSONNEL!$A$11:$A$12,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Trace path",
+          "UNLOCKREQUEST (status check) \u2192 ROOM, PROFESSOR, PERSONNEL (resolve each ID to a name)"
+        ],
+        [
+          null,
+          "Question 3: What professors and rooms is a given student subscribed to?"
+        ],
+        [
+          null,
+          "Target Student ID",
+          "STU-002"
+        ],
+        [
+          null,
+          "Student name (lookup in STUDENT)",
+          "=INDEX(STUDENT!$B$12:$B$15,MATCH(C23,STUDENT!$A$12:$A$15,0))"
+        ],
+        [
+          null,
+          "Room subscription 1 (ROOM_SUBSCRIPTION row 10)",
+          "=IF(ROOM_SUBSCRIPTION!$A$10=C23,INDEX(ROOM!$B$12:$B$15,MATCH(ROOM_SUBSCRIPTION!$B$10,ROOM!$A$12:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Room subscription 2 (ROOM_SUBSCRIPTION row 11)",
+          "=IF(ROOM_SUBSCRIPTION!$A$11=C23,INDEX(ROOM!$B$12:$B$15,MATCH(ROOM_SUBSCRIPTION!$B$11,ROOM!$A$12:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Room subscription 3 (ROOM_SUBSCRIPTION row 12)",
+          "=IF(ROOM_SUBSCRIPTION!$A$12=C23,INDEX(ROOM!$B$12:$B$15,MATCH(ROOM_SUBSCRIPTION!$B$12,ROOM!$A$12:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Professor subscription 1 (PROFESSOR_SUBSCRIPTION row 10)",
+          "=IF(PROFESSOR_SUBSCRIPTION!$A$10=C23,INDEX(PROFESSOR!$B$13:$B$15,MATCH(PROFESSOR_SUBSCRIPTION!$B$10,PROFESSOR!$A$13:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Professor subscription 2 (PROFESSOR_SUBSCRIPTION row 11)",
+          "=IF(PROFESSOR_SUBSCRIPTION!$A$11=C23,INDEX(PROFESSOR!$B$13:$B$15,MATCH(PROFESSOR_SUBSCRIPTION!$B$11,PROFESSOR!$A$13:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Professor subscription 3 (PROFESSOR_SUBSCRIPTION row 12)",
+          "=IF(PROFESSOR_SUBSCRIPTION!$A$12=C23,INDEX(PROFESSOR!$B$13:$B$15,MATCH(PROFESSOR_SUBSCRIPTION!$B$12,PROFESSOR!$A$13:$A$15,0)),\"\u2014\")"
+        ],
+        [
+          null,
+          "Trace path",
+          "STUDENT (name) \u2192 ROOM_SUBSCRIPTION + PROFESSOR_SUBSCRIPTION (their subscriptions) \u2192 ROOM / PROFESSOR (resolve to names)"
+        ]
+      ],
+      "ERD": []
+    }
+  }
+}

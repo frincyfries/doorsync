@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DoorSync</title>
+    <link rel="stylesheet" href="styles.css?v=20261009-1">
+    <link rel="stylesheet" href="dashboard.css?v=20261013-1">
+    <link rel="stylesheet" href="login.css?v=20261011-6">
+  </head>
+  <body>
+    <section id="loginScreen" class="login-screen">
+      <div class="login-layout">
+      <div class="login-art" aria-hidden="true">
+        <span class="login-art-arch"></span>
+        <span class="login-art-fold"></span>
+        <span class="login-art-ribbon"></span>
+        <span class="login-art-gold"></span>
+      </div>
+      <div class="login-panel">
+        <div class="brand-block login-brand">
+          <div class="brand-mark" aria-hidden="true">D</div>
+          <div>
+            <h1>DoorSync</h1>
+            <p>Campus access coordination</p>
+          </div>
+        </div>
+
+        <div class="login-copy">
+          <h2>Log in to your account</h2>
+          <p>Welcome back to your campus.</p>
+        </div>
+
+        <form id="loginForm" class="login-form">
+          <label class="field-label" for="loginEmail">Email address</label>
+          <input id="loginEmail" type="email" autocomplete="email" placeholder="name@nu-baliwag.edu.ph" required>
+
+          <label class="field-label" for="loginPassword">Password</label>
+          <div class="password-field">
+            <input id="loginPassword" type="password" autocomplete="current-password" required>
+            <button id="passwordToggle" class="password-toggle" type="button" aria-label="Show password" aria-controls="loginPassword" title="Show password">
+              <img id="passwordToggleIcon" src="eye.svg" alt="" width="20" height="20" aria-hidden="true">
+            </button>
+          </div>
+
+          <p id="loginError" class="login-error" role="alert"></p>
+
+          <button class="primary-button" type="submit">Log in</button>
+        </form>
+        <p class="login-footer">DoorSync <span aria-hidden="true">&middot;</span> Your campus, connected.</p>
+      </div>
+      <div class="login-visual">
+        <img src="classroom-hallway.png" alt="A bright campus hallway with blue classroom doors and sunlit windows" width="1024" height="1536" fetchpriority="high">
+      </div>
+      </div>
+    </section>
+
+    <div id="appShell" class="app-shell hidden">
+      <aside id="dashboardSidebar" class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark" aria-hidden="true">D</div>
+          <div>
+            <h1>DoorSync</h1>
+            <p>Campus access coordination</p>
+          </div>
+        </div>
+
+        <nav class="role-tabs" aria-label="Role views">
+          <button class="role-tab active" type="button" data-role="student">
+            <span aria-hidden="true">⌂</span>
+            Student
+          </button>
+          <button class="role-tab" type="button" data-role="professor">
+            <span aria-hidden="true">▣</span>
+            Professor
+          </button>
+          <button class="role-tab" type="button" data-role="personnel">
+            <span aria-hidden="true">✓</span>
+            Personnel
+          </button>
+        </nav>
+
+        <section class="sidebar-panel">
+          <h2>Signed in</h2>
+          <div id="signedInUser" class="signed-in-user"></div>
+        </section>
+
+        <section class="sidebar-panel">
+          <h2>System status</h2>
+          <dl class="status-stack">
+            <div>
+              <dt>Locked rooms</dt>
+              <dd id="lockedRoomCount">0</dd>
+            </div>
+            <div id="pendingRequestSummary" class="hidden">
+              <dt id="pendingRequestLabel">Pending Requests</dt>
+              <dd id="pendingRequestCount">0</dd>
+            </div>
+            <div id="availableProfessorSummary" class="hidden">
+              <dt>Available professors</dt>
+              <dd id="availableProfessorCount">0</dd>
+            </div>
+          </dl>
+        </section>
+
+        <div class="sidebar-footer">
+          <div id="demoControls" class="demo-controls hidden">
+            <label for="demoModeToggle"><input id="demoModeToggle" type="checkbox" role="switch" aria-describedby="demoModeStatus"> Demo: bypass class schedule</label>
+            <p id="demoModeStatus" role="status"></p>
+          </div>
+          <button id="logoutButton" class="ghost-button" type="button">Log out</button>
+          <button id="resetData" class="ghost-button" type="button">Reset demo data</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="roleEyebrow">Student view</p>
+            <h2 id="pageTitle">Your tracked rooms</h2>
+          </div>
+          <div class="clock-card">
+            <span id="todayLabel"></span>
+            <strong id="timeLabel"></strong>
+          </div>
+        </header>
+
+        <section id="toast" class="toast" aria-live="polite" aria-atomic="true"></section>
+
+        <section id="studentView" class="view active" aria-labelledby="pageTitle">
+          <section class="dashboard-panel" aria-labelledby="studentRoomsTitle">
+          <div class="section-heading">
+            <div>
+              <h3 id="studentRoomsTitle">Your Scheduled Classrooms</h3>
+              <p>Your weekly classes · Philippine time (UTC+8)</p>
+            </div>
+            <div class="list-controls">
+              <select id="studentRoomFilter" aria-label="Filter classrooms by status">
+                <option value="all">All Statuses</option>
+                <option value="Locked">Locked</option>
+                <option value="Unlocked">Unlocked</option>
+              </select>
+              <select id="studentRoomSort" aria-label="Sort classrooms">
+                <option value="status">Locked First</option>
+                <option value="name">Room Name</option>
+              </select>
+            </div>
+          </div>
+          <div class="room-column-head" aria-hidden="true"><span>Classroom / Status</span><span>Classes / Professor</span><span>Last Updated</span></div>
+          <div id="studentRooms" class="room-status-grid"></div>
+          </section>
+
+          <section class="dashboard-panel" aria-labelledby="studentFacultyTitle">
+          <div class="section-heading">
+            <div>
+              <h3 id="studentFacultyTitle">Professor Availability</h3>
+            </div>
+          </div>
+          <div class="professor-column-head" aria-hidden="true"><span>Professor / Status</span><span>Department</span><span>Email</span><span>Last Updated</span></div>
+          <div id="studentProfessors" class="card-grid"></div>
+          </section>
+        </section>
+
+        <section id="professorView" class="view" aria-labelledby="pageTitle">
+          <div class="action-layout">
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Availability</h3>
+                  <p>Set your current faculty office status.</p>
+                </div>
+              </div>
+              <label class="field-label" for="professorSelect">Professor</label>
+              <select id="professorSelect"></select>
+              <div class="toggle-row">
+                <button id="setAvailable" class="status-action" type="button">Available</button>
+                <button id="setOccupied" class="status-action warning" type="button">Occupied</button>
+              </div>
+              <div id="selectedProfessorStatus" class="selected-status"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Request room unlock</h3>
+                  <p id="requestPolicy">Requests open 15 minutes before class and close when class starts. Philippine time (UTC+8).</p>
+                </div>
+              </div>
+              <label id="requestTargetLabel" class="field-label" for="roomSelect">Scheduled class</label>
+              <select id="roomSelect"></select>
+              <button id="notifyPersonnel" class="primary-button" type="button">Notify personnel</button>
+              <p id="requestWindowStatus" class="request-window" role="status"></p>
+            </section>
+          </div>
+
+          <div class="dashboard-columns">
+          <section class="schedule-section">
+          <div class="section-heading">
+            <div>
+              <h3>Class schedule</h3>
+              <p>Today and the next seven days · Philippine time (UTC+8) · Sample timetable</p>
+            </div>
+          </div>
+          <div id="professorSchedule" class="schedule-list"></div>
+          </section>
+          <section class="activity-section">
+          <div class="section-heading">
+            <div>
+              <h3>Recent activity</h3>
+              <p>Your availability changes and unlock request updates.</p>
+            </div>
+          </div>
+          <div id="professorActivity" class="timeline"></div>
+          </section>
+          </div>
+        </section>
+
+        <section id="personnelView" class="view" aria-labelledby="pageTitle">
+            <section class="dashboard-panel">
+              <div class="section-heading flush">
+                <div>
+                  <h3>Pending unlock requests</h3>
+                  <p>Requests are created by professors and resolved by personnel.</p>
+                </div>
+              </div>
+              <div id="pendingRequests" class="request-list"></div>
+            </section>
+
+
+          <div class="personnel-columns">
+          <section class="dashboard-panel" aria-labelledby="lockedRoomsTitle">
+            <div class="section-heading">
+              <div><h3 id="lockedRoomsTitle">Locked Rooms</h3></div>
+            </div>
+            <div id="lockedRooms" class="request-list compact"></div>
+          </section>
+          <section class="dashboard-panel" aria-labelledby="unlockedRoomsTitle">
+          <div class="section-heading">
+            <div>
+              <h3 id="unlockedRoomsTitle">Unlocked rooms</h3>
+              <p>Mark rooms locked again after classes or room checks.</p>
+            </div>
+          </div>
+          <div id="unlockedRooms" class="request-list compact"></div>
+          </section>
+          </div>
+
+          <section class="dashboard-panel" aria-labelledby="completedRequestsTitle">
+          <div class="section-heading">
+            <div>
+              <h3 id="completedRequestsTitle">Completed today</h3>
+              <p>Resolved requests stay visible for daily review.</p>
+            </div>
+          </div>
+          <div id="completedRequests" class="request-list compact"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="logoutDialog" class="logout-dialog" aria-labelledby="logoutTitle" aria-describedby="logoutDescription">
+      <h2 id="logoutTitle">Log out of DoorSync?</h2>
+      <p id="logoutDescription">You will need to sign in again to access your dashboard.</p>
+      <div class="logout-dialog-actions">
+        <button id="cancelLogout" class="ghost-button" type="button" autofocus>Stay signed in</button>
+        <button id="confirmLogout" class="primary-button" type="button">Log out</button>
+      </div>
+    </dialog>
+
+    <script src="data.js?v=20261009-1"></script>
+    <script src="schedule.js?v=20261011-2"></script>
+    <script src="app.js?v=20261013-1"></script>
+  </body>
+</html>
