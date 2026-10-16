@@ -384,10 +384,19 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
   .dashboard-columns, .personnel-columns, .personnel-columns + .dashboard-panel,
   .view > .dashboard-panel + .dashboard-panel, .view > .action-layout + .dashboard-panel { margin-top: 16px; }
   .room-column-head { display: none; }
-  .room-status-card, .room-status-card:has(.locked) { display: flex; flex-direction: column; align-items: stretch; gap: 8px; padding: 18px 0; }
-  .room-status-card .card-topline, .room-status-card .room-building,
-  .room-status-card .student-class-list, #studentView .room-status-card .card-meta { align-self: stretch; }
-  .room-status-card .student-class-list { margin: 6px 0; }
+  #studentView .room-status-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    grid-template-rows: auto auto 1fr;
+    align-items: start;
+    gap: 6px 16px;
+    padding: 18px 0;
+  }
+  #studentView .room-status-card > * { min-width: 0; overflow-wrap: anywhere; }
+  #studentView .room-status-card .card-topline { grid-column: 1; grid-row: 1; align-self: start; gap: 6px; }
+  #studentView .room-status-card .room-building { grid-column: 1; grid-row: 2 / 4; align-self: start; }
+  #studentView .room-status-card .student-class-list { grid-column: 2; grid-row: 1 / 3; align-self: start; margin: 0; }
+  #studentView .room-status-card .card-meta { grid-column: 2; grid-row: 3; align-self: start; margin-top: 4px; }
   .completed-column-head { display: none; }
   #personnelView #completedRequests .request-card { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   #personnelView #completedRequests h4, #personnelView #completedRequests p,
