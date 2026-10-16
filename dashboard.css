@@ -377,7 +377,9 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
   .mobile-menu-open .sidebar { visibility: visible; transform: translateX(0); box-shadow: 12px 0 40px #14243c26; }
   .mobile-menu-open .sidebar-backdrop { visibility: visible; opacity: 1; }
   .main-content { min-width: 0; padding: 20px; }
-  .topbar { gap: 12px; margin-bottom: 20px; padding-bottom: 18px; }
+  .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; margin-bottom: 20px; padding-bottom: 18px; }
+  .topbar > :first-child { min-width: 0; }
+  .topbar .clock-card { min-width: 0; text-align: right; }
   .topbar h2 { font-size: 1.4rem; overflow-wrap: anywhere; }
   .dashboard-panel, .action-layout > .panel, .dashboard-columns > section { padding: 18px; }
   .action-layout, .dashboard-columns, .personnel-columns { gap: 16px; }
@@ -417,7 +419,7 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
 @media (max-width: 620px) {
   .main-content { padding: 16px 12px; }
   .dashboard-panel, .action-layout > .panel, .dashboard-columns > section { padding: 16px; }
-  .topbar .clock-card { display: flex; align-items: baseline; justify-content: flex-end; align-self: flex-end; flex-wrap: wrap; max-width: 100%; gap: 4px 10px; text-align: right; }
+  .topbar .clock-card { display: grid; justify-items: end; align-self: center; gap: 4px; text-align: right; }
   .clock-card strong { font-size: 0.95rem; }
   .clock-card span { font-size: 0.75rem; }
   .toggle-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
