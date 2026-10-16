@@ -69,7 +69,7 @@ test("request handler enforces ownership and time, migrates saved data, and save
   const nodes = new Map();
   const node = (key) => {
     if (!nodes.has(key)) nodes.set(key, { value: "", dataset: {}, classList: { toggle(name, value) { this[name] = value; }, add() {}, remove() {} },
-      handlers: {}, attributes: {}, addEventListener(type, handler) { this.handlers[type] = handler; }, setAttribute(name, value) { this.attributes[name] = value; }, focus() {}, reset() {}, showModal() { this.open = true; }, close() { this.open = false; } });
+      handlers: {}, attributes: {}, addEventListener(type, handler) { this.handlers[type] = handler; }, setAttribute(name, value) { this.attributes[name] = value; }, removeAttribute(name) { delete this.attributes[name]; }, focus() {}, reset() {}, showModal() { this.open = true; }, close() { this.open = false; } });
     return nodes.get(key);
   };
   const oldState = JSON.parse(JSON.stringify(seed));
@@ -79,9 +79,10 @@ test("request handler enforces ownership and time, migrates saved data, and save
   oldState.unlockRequests = [];
   const storage = new Map([["doorsync-state-v1", JSON.stringify(oldState)],
     ["doorsync-session-v1", JSON.stringify({ role: "professor", userId: "PROF-001" })]]);
+  const viewport = { matches: false, addEventListener(type, handler) { this.onChange = handler; } };
   const context = vm.createContext({ Date: Clock, Intl, structuredClone, setInterval() {},
-    window: { clearTimeout() {}, setTimeout() {} },
-    document: { querySelector: node, querySelectorAll: () => [] },
+    window: { clearTimeout() {}, setTimeout() {}, matchMedia: () => viewport },
+    document: { body: node("body"), addEventListener() {}, querySelector: node, querySelectorAll: () => [] },
     localStorage: { getItem: (key) => storage.get(key), setItem: (key, value) => storage.set(key, value), removeItem: (key) => storage.delete(key) },
   });
   vm.runInContext(fs.readFileSync("data.js", "utf8"), context);
@@ -92,6 +93,24 @@ test("request handler enforces ownership and time, migrates saved data, and save
   assert.equal(vm.runInContext("state.demoMode", context), false);
   assert.equal(nodes.has("#sidebarToggle"), false);
   assert.equal(nodes.has("#sidebarReopen"), false);
+  node("#openSidebar").handlers.click();
+  assert.equal(node("#openSidebar").attributes["aria-expanded"], "false");
+  assert.equal(node("#dashboardSidebar").inert, false);
+  viewport.matches = true;
+  viewport.onChange();
+  assert.equal(node("#dashboardSidebar").inert, true);
+  node("#openSidebar").handlers.click();
+  assert.equal(node("#openSidebar").attributes["aria-expanded"], "true");
+  assert.equal(node(".main-content").inert, true);
+  node("#sidebarBackdrop").handlers.click();
+  assert.equal(node(".main-content").inert, false);
+  assert.equal(node("#dashboardSidebar").inert, true);
+  node("#openSidebar").handlers.click();
+  viewport.matches = false;
+  viewport.onChange();
+  assert.equal(node("#dashboardSidebar").inert, false);
+  assert.equal(node(".main-content").inert, false);
+  assert.equal(node("body").classList["mobile-menu-open"], false);
   node("#loginPassword").type = "password";
   node("#loginPassword").value = "test-password";
   node("#passwordToggle").handlers.click();

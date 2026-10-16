@@ -684,6 +684,57 @@ document.querySelector("#resetData").addEventListener("click", () => {
   notify("Demo data reset.");
 });
 
+const mobileViewport = window.matchMedia("(max-width: 900px)");
+const sidebar = document.querySelector("#dashboardSidebar");
+const mainContent = document.querySelector(".main-content");
+const openSidebarButton = document.querySelector("#openSidebar");
+let mobileMenuOpen = false;
+
+function setMobileMenu(open, restoreFocus = true) {
+  mobileMenuOpen = open && mobileViewport.matches && Boolean(session);
+  document.body.classList.toggle("mobile-menu-open", mobileMenuOpen);
+  openSidebarButton.setAttribute("aria-expanded", String(mobileMenuOpen));
+  sidebar.inert = mobileViewport.matches && !mobileMenuOpen;
+  mainContent.inert = mobileMenuOpen;
+  if (mobileMenuOpen) {
+    sidebar.setAttribute("role", "dialog");
+    sidebar.setAttribute("aria-modal", "true");
+    sidebar.setAttribute("aria-label", "Dashboard menu");
+    document.querySelector("#closeSidebar").focus();
+  } else {
+    sidebar.removeAttribute("role");
+    sidebar.removeAttribute("aria-modal");
+    sidebar.removeAttribute("aria-label");
+    if (restoreFocus && mobileViewport.matches) openSidebarButton.focus();
+  }
+}
+
+openSidebarButton.addEventListener("click", () => setMobileMenu(true));
+document.querySelector("#closeSidebar").addEventListener("click", () => setMobileMenu(false));
+document.querySelector("#sidebarBackdrop").addEventListener("click", () => setMobileMenu(false));
+mobileViewport.addEventListener("change", () => setMobileMenu(false, false));
+document.addEventListener("keydown", (event) => {
+  if (!mobileMenuOpen || document.querySelector("#logoutDialog").open) return;
+  if (event.key === "Escape") {
+    event.preventDefault();
+    setMobileMenu(false);
+  }
+  if (event.key === "Tab") {
+    const controls = [...sidebar.querySelectorAll("button, input, select, a[href], [tabindex='0']")]
+      .filter((element) => !element.disabled && element.getClientRects().length);
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+});
+setMobileMenu(false, false);
+
 document.querySelector("#logoutButton").addEventListener("click", () => {
   document.querySelector("#logoutDialog").showModal();
 });
@@ -695,6 +746,7 @@ document.querySelector("#cancelLogout").addEventListener("click", () => {
 document.querySelector("#confirmLogout").addEventListener("click", () => {
   document.querySelector("#logoutDialog").close();
   session = null;
+  setMobileMenu(false, false);
   saveSession();
   document.querySelector("#loginForm").reset();
   setPasswordVisibility(false);

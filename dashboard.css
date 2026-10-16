@@ -321,7 +321,7 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
 }
 @media (max-width: 900px) {
   .app-shell { grid-template-columns: minmax(0, 1fr); }
-  .sidebar .sidebar-panel { display: block; }
+  .sidebar .sidebar-panel:not(.hidden) { display: block; }
   .sidebar .role-tabs { grid-template-columns: 1fr; }
   .action-layout { grid-template-columns: 1fr; }
   .sidebar { padding: 18px; }
@@ -342,4 +342,73 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
   .room-status-card .student-class-list, #studentView .room-status-card .card-meta { align-self: stretch; }
   .schedule-item { grid-template-columns: 1fr; }
   .schedule-item > :last-child { grid-column: auto; }
+}
+
+.mobile-toolbar, .mobile-menu-button, .sidebar-backdrop { display: none; }
+@media (max-width: 900px) {
+  body.mobile-menu-open { overflow: hidden; }
+  .app-shell { min-height: 100dvh; }
+  .mobile-toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; color: #245b9e; font-weight: 700; }
+  .mobile-menu-button { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; padding: 0; border: 1px solid #d3deed; border-radius: 8px; background: #fff; }
+  #closeSidebar { align-self: flex-end; }
+  .sidebar {
+    display: flex;
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 50;
+    width: min(320px, calc(100% - 48px));
+    height: 100dvh;
+    padding: 16px 20px max(20px, env(safe-area-inset-bottom));
+    gap: 20px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-right: 1px solid #d3deed;
+    border-bottom: 0;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: transform 240ms ease, visibility 240ms;
+  }
+  .sidebar > * { flex-shrink: 0; }
+  .sidebar .role-tab { justify-content: flex-start; }
+  .sidebar .brand-block { gap: 10px; }
+  .sidebar .brand-block h1 { font-size: 1.25rem; }
+  .sidebar .brand-block p { font-size: 0.68rem; }
+  .sidebar-backdrop { display: block; position: fixed; inset: 0; z-index: 49; background: #14243c66; backdrop-filter: blur(3px); opacity: 0; visibility: hidden; transition: opacity 240ms ease, visibility 240ms; }
+  .mobile-menu-open .sidebar { visibility: visible; transform: translateX(0); box-shadow: 12px 0 40px #14243c26; }
+  .mobile-menu-open .sidebar-backdrop { visibility: visible; opacity: 1; }
+  .main-content { min-width: 0; padding: 20px; }
+  .topbar { gap: 12px; margin-bottom: 20px; padding-bottom: 18px; }
+  .topbar h2 { font-size: 1.4rem; overflow-wrap: anywhere; }
+  .dashboard-panel, .action-layout > .panel, .dashboard-columns > section { padding: 18px; }
+  .action-layout, .dashboard-columns, .personnel-columns { gap: 16px; }
+  .dashboard-columns, .personnel-columns, .personnel-columns + .dashboard-panel,
+  .view > .dashboard-panel + .dashboard-panel, .view > .action-layout + .dashboard-panel { margin-top: 16px; }
+  .room-column-head { display: none; }
+  .room-status-card, .room-status-card:has(.locked) { display: flex; flex-direction: column; align-items: stretch; gap: 8px; padding: 18px 0; }
+  .room-status-card .card-topline, .room-status-card .room-building,
+  .room-status-card .student-class-list, #studentView .room-status-card .card-meta { align-self: stretch; }
+  .room-status-card .student-class-list { margin: 6px 0; }
+  .completed-column-head { display: none; }
+  #personnelView #completedRequests .request-card { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  #personnelView #completedRequests h4, #personnelView #completedRequests p,
+  #personnelView #completedRequests .badge, #personnelView #completedRequests .card-topline > span:not(.badge) { grid-column: 1; grid-row: auto; }
+  .request-card, .card-topline { min-width: 0; overflow-wrap: anywhere; }
+  .card-topline { flex-wrap: wrap; }
+  .section-heading { gap: 12px; }
+  .panel select { min-width: 0; max-width: 100%; }
+}
+@media (max-width: 620px) {
+  .main-content { padding: 16px 12px; }
+  .dashboard-panel, .action-layout > .panel, .dashboard-columns > section { padding: 16px; }
+  .topbar .clock-card { display: flex; align-items: baseline; gap: 10px; }
+  .clock-card strong { font-size: 0.95rem; }
+  .clock-card span { font-size: 0.75rem; }
+  .toggle-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .list-controls select { min-height: 44px; }
+  #personnelView .request-actions > button { flex: 1; min-height: 44px; }
+  #personnelView .request-card, #personnelView .personnel-columns .request-card { padding: 16px 0; }
+  .schedule-item { padding: 16px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar, .sidebar-backdrop { transition: none; }
 }
