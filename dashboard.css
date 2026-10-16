@@ -384,9 +384,17 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
   .dashboard-columns, .personnel-columns, .personnel-columns + .dashboard-panel,
   .view > .dashboard-panel + .dashboard-panel, .view > .action-layout + .dashboard-panel { margin-top: 16px; }
   .room-column-head { display: none; }
+  #studentView { --mobile-student-columns: minmax(0, 1fr) minmax(0, 1.35fr); }
+  #studentView .professor-card {
+    display: grid;
+    grid-template-columns: var(--mobile-student-columns);
+    align-items: start;
+    gap: 16px;
+    padding: 18px 0;
+  }
   #studentView .room-status-card {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    grid-template-columns: var(--mobile-student-columns);
     grid-template-rows: auto auto 1fr;
     align-items: start;
     gap: 6px 16px;
