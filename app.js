@@ -284,7 +284,12 @@ function renderStudent() {
             const professor = byId(state.professors, "ProfessorID", item.ProfessorID);
             const days = item.Days.map((day) => ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][day]).join(", ");
             const time = (value) => DoorSyncSchedule.clock(new Date(`2000-01-01T${value}:00+08:00`));
-            return `<p><strong>${item.Subject}</strong><br>${professor?.FullName || "Unassigned"}<br>${days} · ${time(item.StartTime)} - ${time(item.EndTime)}</p>`;
+            return `<p><strong>${item.Subject}</strong><br>${professor?.FullName || "Unassigned"}<span class="student-inline-schedule"><br>${days} · ${time(item.StartTime)} - ${time(item.EndTime)}</span></p>`;
+          }).join("")}</div>
+          <div class="student-schedule-column">${classes.filter((item) => item.RoomID === room.RoomID).map((item) => {
+            const days = item.Days.map((day) => ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][day]).join(", ");
+            const time = (value) => DoorSyncSchedule.clock(new Date(`2000-01-01T${value}:00+08:00`));
+            return `<p>${days} · ${time(item.StartTime)} - ${time(item.EndTime)}</p>`;
           }).join("")}</div>
           <div class="card-meta">
             <span>Updated ${formatTime(room.StatusUpdatedAt)}</span>

@@ -80,6 +80,7 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
 .room-status-card .student-class-list { grid-column: 2; grid-row: 1 / 3; align-self: center; }
 #studentView .room-status-card .card-meta { grid-column: 3; grid-row: 1 / 3; border: 0; margin: 0; padding: 0; justify-content: center; align-items: flex-start; align-self: center; }
 .student-class-list p + p { margin-top: 12px; }
+.student-schedule-column { display: none; }
 #studentProfessors { display: block; }
 .professor-column-head {
   display: grid;
@@ -107,7 +108,12 @@ button:focus-visible, input:focus, select:focus { outline-color: #b1c8fa; }
   #studentView { --student-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr); }
   .room-column-head, .room-status-card, .room-status-card:has(.locked),
   .professor-column-head, .professor-card { grid-template-columns: var(--student-columns); column-gap: 18px; }
-  .room-column-head > :nth-child(2), .room-status-card .student-class-list { grid-column: 2 / 4; }
+  .room-column-head > :nth-child(2), .room-status-card .student-class-list { grid-column: 2; }
+  .room-column-head > :nth-child(3) { grid-column: 3; }
+  .student-inline-schedule { display: none; }
+  .student-schedule-column { display: block; grid-column: 3; grid-row: 1 / 3; align-self: center; min-width: 0; overflow-wrap: anywhere; }
+  .room-column-head .student-schedule-column { grid-row: auto; }
+  .student-schedule-column p + p { margin-top: 12px; }
   .room-column-head > :last-child, #studentView .room-status-card .card-meta { grid-column: 4; }
 }
 .action-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
